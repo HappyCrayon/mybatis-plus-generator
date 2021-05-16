@@ -18,6 +18,7 @@
         <mybatis-plus.version>3.3.0</mybatis-plus.version>
         <mysql.connector.java.version>8.0.19</mysql.connector.java.version>
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
+        <commons-lang-version>3.9</commons-lang-version>
     </properties>
 
 
@@ -49,6 +50,12 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
             <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang-version}</version>
         </dependency>
 
         <dependency>

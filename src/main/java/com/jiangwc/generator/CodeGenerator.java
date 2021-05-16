@@ -11,7 +11,7 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import java.util.ArrayList;
 import java.util.List;
 
-// 演示例子，执行 main 方法控制台输入模块表名回车自动生成对应项目目录中
+// 演示例子，执行 main 方法控制台输入模块表名回车自动生成对应项目目录中，ConfigBuilder类比较重要
 public class CodeGenerator {
 
     public static void main(String[] args) {
@@ -28,6 +28,9 @@ public class CodeGenerator {
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("jiangwc");
         gc.setOpen(true);
+        //Service接口类前面不加I
+        gc.setServiceName("%sService");
+        gc.setEntityName("%s");
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
         mpg.setGlobalConfig(gc);
 
@@ -35,7 +38,7 @@ public class CodeGenerator {
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl("jdbc:mysql://localhost:3306/dbg?serverTimezone=GMT&useSSL=false&characterEncoding=utf8");
         // dsc.setSchemaName("public");
-        dsc.setDriverName("com.mysql.jdbc.Driver");
+        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
         mpg.setDataSource(dsc);
@@ -96,7 +99,6 @@ public class CodeGenerator {
         // templateConfig.setEntity("templates/entity2.java");
         // templateConfig.setService();
         // templateConfig.setController();
-
         templateConfig.setXml(null);
         mpg.setTemplate(templateConfig);
 
@@ -115,7 +117,8 @@ public class CodeGenerator {
 //        strategy.setInclude(includeTables);
 //        strategy.setExclude(excludeTables);
         strategy.setControllerMappingHyphenStyle(true);
-        strategy.setTablePrefix(pc.getModuleName() + "_");
+//        strategy.setTablePrefix(pc.getModuleName() + "_");
+        strategy.setTablePrefix("DBG_");
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
