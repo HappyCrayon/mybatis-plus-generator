@@ -15,9 +15,10 @@ import java.util.List;
 public class CodeGenerator {
 
     public static void main(String[] args) {
-        String[] includeTables = new String[]{"dbg_agent_ad"};
+        String[] includeTables = new String[]{"dbg_cash_next_settle"};
         String classPackage = "com.store.jdream.sales.server";
         String moduleName = "dbg";
+        String tablePrefix = "DBG_";
 
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
@@ -118,7 +119,7 @@ public class CodeGenerator {
 //        strategy.setExclude(excludeTables);
         strategy.setControllerMappingHyphenStyle(true);
 //        strategy.setTablePrefix(pc.getModuleName() + "_");
-        strategy.setTablePrefix("DBG_");
+        strategy.setTablePrefix(tablePrefix);
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
