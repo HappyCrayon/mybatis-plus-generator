@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class CodeGenerator {
 
     public static void main(String[] args) {
-        String[] includeTables = new String[]{"dbg_cash_next_settle"};
+        String[] includeTables = new String[]{"DBG_ORDER_CASH_ITEM"};
         String classPackage = "com.store.jdream.sales.server";
         String moduleName = "dbg";
         String tablePrefix = "DBG_";
@@ -29,6 +30,8 @@ public class CodeGenerator {
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("jiangwc");
         gc.setOpen(true);
+        //设置映射的日期格式
+        gc.setDateType(DateType.ONLY_DATE);
         //Service接口类前面不加I
         gc.setServiceName("%sService");
         gc.setEntityName("%s");
@@ -115,7 +118,7 @@ public class CodeGenerator {
         // 写于父类中的公共字段
         strategy.setSuperEntityColumns("id");
         // <include> 与 <exclude> 只能配置一项！
-//        strategy.setInclude(includeTables);
+        strategy.setInclude(includeTables);
 //        strategy.setExclude(excludeTables);
         strategy.setControllerMappingHyphenStyle(true);
 //        strategy.setTablePrefix(pc.getModuleName() + "_");

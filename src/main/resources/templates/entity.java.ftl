@@ -12,6 +12,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 </#if>
+import com.store.framework.server.builder.NoNullStyle;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -140,7 +141,7 @@ public class ${entity} implements Serializable {
 <#if !entityLombokModel>
     @Override
     public String toString() {
-        return new ToStringBuilder(this).toString();
+        return ToStringBuilder.reflectionToString(this, new NoNullStyle());
     }
 </#if>
 }
